@@ -122,13 +122,14 @@ void getNM(int& n, int& m, int& battle, queue<string>& nQueue, queue<string>& mQ
     int nInt = getInt(nQueue);
     int mInt = getInt(mQueue);
     int i;
-
+    int nSize = batNQ.size();
+    int mSize = batMQ.size();
     if (nInt > mInt) // player 1 gets the cards
     {
         addToQ(battle, nQueue, mQueue, nQueue, mQueue, batNQ, batMQ);
         
         if (battle == 1)
-            n += 9; // add 4 cards from self, 4 cards from opponent, and 2 cards from current comparison
+            n += nSize + mSize + 1; // add 4 cards from self, 4 cards from opponent, and 1 card from current comparison
         else
             n += 1;
             
@@ -138,7 +139,7 @@ void getNM(int& n, int& m, int& battle, queue<string>& nQueue, queue<string>& mQ
         addToQ(battle, mQueue, nQueue, nQueue, mQueue, batNQ, batMQ);
         
         if (battle == 1)
-            m += 9;
+            m += nSize + mSize + 1;
         else 
             m += 1;
         n -= 1;
